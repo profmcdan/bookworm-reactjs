@@ -1,9 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
+import LoginForm from "../forms/LoginForm";
 
-export default () => {
-  return (
-    <div>
-      <h1>Login Page</h1>
-    </div>
-  );
-};
+class LoginPage extends Component {
+  submit = data => {
+    console.log(data);
+    // make async request here later and redirect
+  };
+  render() {
+    return (
+      <div>
+        <h1>Login Page</h1>
+        <LoginForm submit={this.submit} />
+      </div>
+    );
+  }
+}
+
+export default LoginPage;
