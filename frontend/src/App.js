@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/layout/Navbar";
-import Home from "./components/home/Home";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import Navbar from "./components/layout/Navbar";
+// import Home from "./components/home/Home";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
 import setAuthToken from "./setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/auth";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Home from "./components/layout/Home";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -29,12 +32,14 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Navbar />
+            <Header />
             <Route exact path="/" component={Home} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/home" component={Home} />
             </div>
+            <Footer />
           </div>
         </Router>
       </Provider>
